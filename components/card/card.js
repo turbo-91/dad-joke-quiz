@@ -1,78 +1,49 @@
-const cardContainer = document.querySelector('[data-js="card-container"]');
+const main = document.querySelector('[data-js="main"]');
 
-export function createCharacterCard(character) {
-  // li element
-  const card = document.createElement("li");
-  card.setAttribute("class", "card");
-  cardContainer.append(card);
-
-  // div image container
-  const cardImageContainer = document.createElement("div");
-  cardImageContainer.setAttribute("class", "card__image-container");
-  card.append(cardImageContainer);
+export function createJokeCard(joke) {
+  // section element
+  const card = document.createElement("section");
+  card.setAttribute("class", "question-card");
+  main.append(card);
 
   // img element
-  const cardImage = document.createElement("img");
-  cardImage.setAttribute("class", "card__image-container");
-  cardImage.setAttribute("src", `${character.image}`);
-  cardImage.setAttribute("alt", `${character.name}`);
-  cardImageContainer.append(cardImage);
+  const cardBookmark = document.createElement("img");
+  cardBookmark.setAttribute("class", "question-card__icon");
+  cardBookmark.setAttribute("src", `/assets/bookmark_transparent.png`);
+  cardBookmark.setAttribute("alt", `bookmark`);
+  cardBookmark.setAttribute("data-js", `bookmark`);
+  card.append(cardBookmark);
 
-  // div img gradient
-  const cardImageGradient = document.createElement("div");
-  cardImageGradient.setAttribute("class", "card__image-gradient");
-  cardImageContainer.append(cardImageGradient);
+  // // joke Question
+  const jokeQuestion = document.createElement("h2");
+  jokeQuestion.setAttribute("class", "question-card__title");
+  jokeQuestion.textContent = `${joke.question}`;
+  card.append(jokeQuestion);
 
-  // div card Content
-  const cardContent = document.createElement("div");
-  cardContent.setAttribute("class", "card__content");
-  card.append(cardContent);
+  // answer button
+  const answerButton = document.createElement("button");
+  answerButton.setAttribute("class", "question-card__button");
+  answerButton.setAttribute("data-js", "button");
+  answerButton.textContent = "answer";
+  card.append(answerButton);
 
-  // h2 card title
-  const cardTitle = document.createElement("h2");
-  cardTitle.setAttribute("class", "card__title");
-  cardTitle.textContent = `${character.name}`;
-  cardContent.append(cardTitle);
+  // answer text
+  const answerText = document.createElement("p");
+  // answerText.setAttribute("class", "question-card__answer");
+  answerText.setAttribute("data-js", "answer");
+  answerText.textContent = `${joke.answer}`;
+  card.append(answerText);
 
-  // dl card Info
-  const cardInfo = document.createElement("dl");
-  cardInfo.setAttribute("class", "card__info");
-  cardContent.append(cardInfo);
+  // tag container
+  const tagContainer = document.createElement("div");
+  tagContainer.setAttribute("class", "question-card__tags");
+  card.append(tagContainer);
 
-  // dt card info status title
-  const cardInfoStatusTitle = document.createElement("dt");
-  cardInfoStatusTitle.setAttribute("class", "card__info-title");
-  cardInfoStatusTitle.innerText = "Status";
-  cardInfo.append(cardInfoStatusTitle);
-
-  // dd card info status description
-  const cardInfoStatusDescription = document.createElement("dd");
-  cardInfoStatusDescription.setAttribute("class", "card__info-description");
-  cardInfoStatusDescription.textContent = `${character.status}`;
-  cardInfo.append(cardInfoStatusDescription);
-
-  // dt card info type title
-  const cardInfoTypeTitle = document.createElement("dt");
-  cardInfoTypeTitle.setAttribute("class", "card__info-title");
-  cardInfoTypeTitle.innerText = "Type";
-  cardInfo.append(cardInfoTypeTitle);
-
-  // dd card info type description
-  const cardInfoTypeDescription = document.createElement("dd");
-  cardInfoTypeDescription.setAttribute("class", "card__info-description");
-  cardInfoTypeDescription.textContent = `${character.type}`;
-  cardInfo.append(cardInfoTypeDescription);
-
-  // dt card info occurences title
-  const cardInfoOccurencesTitle = document.createElement("dt");
-  cardInfoOccurencesTitle.setAttribute("class", "card__info-title");
-  cardInfoOccurencesTitle.innerText = "Occurences";
-  cardInfo.append(cardInfoOccurencesTitle);
-
-  // dd card info occurences description
-  const cardInfoOccurencesDescription = document.createElement("dd");
-  cardInfoOccurencesDescription.setAttribute("class", "card__info-description");
-  cardInfoOccurencesDescription.textContent = `${character.episode.length}`;
-  cardInfo.append(cardInfoOccurencesDescription);
-  return card;
+  // tag loop
+  joke.tags.forEach((jokeTag) => {
+    const tag = document.createElement("div");
+    tag.setAttribute("class", "question-card__tag");
+    tag.textContent = `#${jokeTag}`;
+    tagContainer.append(tag);
+  });
 }
