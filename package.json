@@ -1,15 +1,15 @@
 {
-  "name": "recap-project-2_quiz-app",
+  "name": "dad-joke-quiz",
   "version": "0.0.0-unreleased",
-  "description": "Recap Project 2 Quiz-App",
+  "description": "",
   "main": "index.html",
-  "nf": {
-    "template": "html-css-js"
-  },
   "scripts": {
     "lint": "npx -y eslint@latest .",
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx -y jest@latest --watchAll",
     "start": "npx -y live-server@latest --port=3000"
+  },
+  "nf": {
+    "template": "html-css-js"
   },
   "type": "module",
   "devDependencies": {

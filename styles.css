@@ -1,5 +1,54 @@
-@import "./css/global.css";
-@import "./css/components.css";
-@import "./css/pages-home.css";
-@import "./css/pages-profile.css";
-@import "./css/pages-form.css";
+@import "components/card/card.css";
+@import "components/search-bar/search-bar.css";
+@import "components/nav-button/nav-button.css";
+@import "components/nav-pagination/nav-pagination.css";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-primary: black;
+  --color-secondary: #16acc9;
+  --color-accent: #d2da4b;
+  --font-family: "VT323-Regular", "Arial";
+}
+
+@font-face {
+  font-family: "VT323-Regular";
+  src: url(./assets/VT323-Regular.ttf);
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--color-accent);
+  font-size: 1.2rem;
+
+  background-image: url("assets/wallpaperflare.com_wallpaper.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.title {
+  padding: 10px 0;
+  height: 200px;
+  width: 320px;
+}
+
+@media (min-width: 1024px) {
+  .title {
+    height: 400px;
+    width: 640px;
+  }
+}

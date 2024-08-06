@@ -1,134 +1,155 @@
-# Recap Project 2: Quiz App - Interactivity
+# Recap Project 3: Rick and Morty App
 
-In a previous project, you've created the layout for a Quiz App with HTML and CSS. The focus of this
-project is to add interactivity with JavaScript.
+In this recap project, you are going to create a single page app for browsing all the characters of the famous tv show "Rick and Morty".
 
-## Template
-
-If you are not yet finished or not satisfied with your code from Recap Project 1, you can use this template to start your
-work.
-
-Open your terminal and navigate to the folder where all your projects are located. Execute the following
-command to create a new project based on a template:
-
-`npx ghcd@latest spicedacademy/fs-web-exercises/tree/main/sessions/recap-project-2/quiz-app`
-
-- There are three pages:
-  - an `index.html` with a list of all question cards
-  - a `bookmark.html` with bookmarked cards only
-  - a `profile.html` with personal information and settings
-- The structure of styling follows [BEM](http://getbem.com/introduction/); this is why the CSS files
-  are organized according to their corresponding component.
-
-Alternatively you can keep working with the Quiz App you built in Recap Project 1.
+You are going to work in a group. Create **only one project per group** using the [guide in the template section](./README.md#template) below!
 
 🚀 Project Deployment to GitHub Pages is required: Please adhere to the deployment guidelines outlined in your repository's documentation `(https://github.com/spiced-academy/[your-cohort-name]-web-dev/blob/main/docs/github-pages.md)` for detailed instructions. In the URL replace `[your-cohort-name]` with your cohort's designated name.
+
+---
+
+## API
+
+We are going to fetch all necessary information about the characters from a REST API specifically
+designed for Rick and Morty. Check out the [API](https://rickandmortyapi.com/). You find all the
+information you need in the docs.
+
+> ❗️ This API has pagination, that means that you can fetch only 20 characters at a time.
+
+---
+
+## Create the Project
+
+- Open your terminal and navigate to the folder where all your projects are located.
+- Execute the following command to create a new project based on a template:
+
+```bash
+npx ghcd@latest spiced-academy/fs-web-exercises/tree/main/sessions/recap-project-3/rick-and-morty-app
+```
+
+- Create a new empty repository on GitHub named `yourName-partnerName-ricky-and-morty`, link it to the created repository on your computer and push the code.
+- Each member of the group clones the repository to their local machine.
+- Follow the instructions given in the `README.md` file.
+
+> 💡 Don't forget to work on feature branches, otherwise you might run into merge conflicts!
+
+---
+
 ## Tasks
 
-### 1. Toggle functionality
+### Character Card Component
 
-You have successfully built your **card** component in your Quiz App. But currently the user
-**can't** interact with it. Now we want to implement a toggle functionality for the bookmark and the
-answer button.
+For now you have only one hard coded character card for Rick Sanchez in your HTML. We want to create
+them dynamically in our JavaScript.
 
-> ❗️ All functionality applies to the first card and the first bookmark only. Applying the
-> functionality to all cards and bookmarks will be discussed later in the bootcamp.
+- Write a function `createCharacterCard` inside the `card.js` file and export it.
+- You can use `innerHTML` to generate the HTML of the card. Cut the relevant HTML code of the card
+  from the `index.html` and use it in your function.
+- The following elements of the card need to be dynamic and change for each character:
+  - the `src` of the image
+  - the name of the character
+  - the status, type and occurrences values
+- HINT: go to the docs and look where you can find all the information in the character objects you
+  will receive from the API.
+- Think about which input parameters this function will need.
+- The function finally returns the created `li` HTML element.
 
-#### Bookmark button
+### Fetch the Data
 
-The following acceptance criteria should be met for the bookmark button:
+Now we can fetch the character data from the API and generate our cards with it.
 
-- When the user clicks the **bookmark icon** the **bookmark icon** should change it's visual state
-  (e. g. another color or image)
-- When the user clicks the **bookmark icon** again the **bookmark icon** should change to its former
-  style
-- The user can click on the bookmark endlessly and the bookmark will **toggle between both
-  stylings**
+- Inside of the `index.js` create a function called `fetchCharacters`.
+- Use your knowledge about fetching to get the first 20 characters from the API. You can find the
+  correct API endpoint in the docs.
+- Import the `createCharacterCard` function.
+- After successfully fetching the character data, use array methods to create an HTML card for each
+  character and append it to the `cardContainer`.
+- Make sure that the `cardContainer` is emptied every time new characters are fetched (HINT: you can
+  use `innerHTML = ''` for that).
+- Call the function inside the `index.js`. Now you should see 20 cards in your app.
 
-> **Note:** Clicking on a bookmark icon will not yet cause the question to be displayed on the
-> **favorites** page as well and this is **not** part of the exercise.
+### Pagination
 
-#### Answer button
+Great Job! But we want to see not only 20 characters, we want all of them! So lets implement the
+pagination.
 
-The following acceptance criteria should be met for the answer button:
+- By adding the string `?page=<pageIndex>` to the end of the fetch URL, you can receive the
+  respective page of characters.
+- Use here the state variable `page` to keep track of the current page index.
+- Inside of the `info` part of the received data you can find the max page count.
+- Add an event listener on each of the next and prev buttons which do the following
+  - it is prevented that the page index could go higher than the max page index or below 1
+  - the page index is increased / decreased
+  - the `fetchCharacters` function is called
+- Update the pagination display each time characters are fetched to show the current page index and
+  the current max page index.
 
-- When the user clicks on the **button** the **previously hidden** answer should be displayed
-- When the user clicks this **button** again the answer is **hidden** again
-- The user can click on this button endlessly and the answer will **either be displayed or hidden**
-  after each click
-- The **toggle** functionality should be applied by using a **class** which is named **"hidden"**
-- If the user clicks on an answer button, we want the button to say **"hide answer"** when the
-  answer is displayed and **"show answer"** when the answer is not displayed.
+### The Search Bar
 
-### 2. Form to add new cards
+Now we want even more functionality in our app. We want to find individual characters by typing
+their name into the search bar.
 
-Users should be able to add new cards to your Quiz App. The first step is to add a page with a form.
+- Create a 'submit' event listener on the search bar.
+- Update the state variable `searchQuery` with the current text inside the search bar every time
+  this event is triggered.
+- Modify the fetch URL again by adding another url encoded attribute `name`: append
+  `&name=<searchQuery>` to the url. If the search query is an empty string, it will be ignored by
+  the API, so don't worry about that.
+- Now trigger the function `fetchCharacters` whenever a submit event happens.
 
-![Quiz App form](./wireframes/quiz-app-form-page.png)
+> 💡 You might run into some bugs at this point. Think about how the page and max page index might
+> have to change when you start searching for only subsets of all characters.
 
-- Create a new HTML document called `form.html`
-- Add the page to the navigation of your Quiz App
-- Within `form.html` create a form with the following fields
-  - "Your question" as `<textarea />`
-  - "Your answer" as `<textarea />`
-  - "Tag" as `<input type="text" />`
-  - Submit button
+### Bonus: Refactoring your Code
 
-> ❗️ Please consider only a single tag per card for now. Handling a list of individual tags will be
-> discussed later on.
+You've done it: your app is working as expected. 🚀✨
 
-### 3. Create new Cards
+However, we want to tidy up our code so that not everything is written in a single javascript file.
 
-The data entered into the form by users should be used to create a new question, that will be
-displayed as a **card** like the other questions.
+- The next and prev button as well as the pagination and the search bar are currently hard coded in
+  the `index.html`. Remove the HTML code and generate them via JavaScript. Use the respective
+  JavaScript component files for that.
+- The component functions should be called `createButton`, `createPagination`, and `createSearchBar`
+  and should return the created elements.
+- HINT: It is challenging to get the event listener functions right for these components. Use an
+  extra input parameter `onClick` or `onSubmit` in your components.
+- Use the create functions inside your `index.js` to generate the UI components. You'll need to
+  specify the event listener callback functions here either as anonymous arrow functions or as named
+  functions. Use them as the argument for `onClick` or `onSubmit`, respectively.
+- Append the created components at the right places in your HTML. All container elements are already
+  available in the `index.js`.
 
-- Listen the form's `submit` event
-- Prevent the default submit behavior to handle everything within JavaScript
-- Read all entered data from the input fields (question, answer, tags)
-- Generate all DOM element for a **card** with `createElement()`
-- Insert the form's data as text into the DOM elements
-- Append the **card** to the page, directly below the form
+### Bonus: Style Your Project
 
-> ❗️ For now the new **card** should be displayed directly below the form. Adding the **card** to
-> the list of the other cards is a topic for later.
+Congratulations on getting your project up and running! Now, let's take it to the next level by adding some flair and personality through styling. The bonus feature focuses on enhancing the visual appeal of your page with creative design elements. Follow these steps to give your project that extra touch:
 
-> **Note:** To avoid error messages, we recommend creating a new JavaScript file specifically for your form page. This ensures that any event listeners you've added for other pages won't cause problems with HTML elements that aren't present on the form page.
+#### Step 1: Experiment with Colors and Fonts
 
-### 4. Form field text counter
+Dare to be bold with your color palette and font choices. Explore combinations that complement each other and resonate with the theme of your project. Remember, a harmonious color scheme and well-chosen fonts contribute significantly to the overall aesthetic.
 
-The form fields for question and answer should be limited to a text of 150 characters. While typing
-users should be informed about the amount of characters left.
+#### Step 2: Prioritize Legibility
 
-![Quiz App form with counter](./wireframes/quiz-app-form-page-with-counter.png)
+While getting creative, ensure that your page remains easy to read and navigate. Legibility is key to a positive user experience. Maintain a good contrast between text and background, and choose font sizes that are comfortable for users to consume your content.
 
-- Add a `maxlength` attribute to the form fields
-- Add a display below the form fields to show the amount of characters
-- Use the `input` event to read the `length` of a field's content and calculate and display the
-  result
-- Think of ways to use the same logic for both form fields and to not repeat your code
+#### Step 3: Embrace Animation
 
-## 5. Bonus
+Introduce dynamic elements to your project through animations. Whether it's subtle transitions or eye-catching effects, animations can bring your project to life. Consider using CSS animations or JavaScript libraries to achieve the desired visual impact.
 
-1. When adding a new question card in your newly created form.html; add aswell event listeners to the new button and icon which will have the same functionality as described in Task 1.
+#### Step 4: Consistency is Key
 
-   > ❗️ You DON'T need any loops or querySelectorAll. Just try to grab the individual button and icon directly after adding them to the DOM by giving them unique attributes.
+Maintain a consistent design language across your project. This includes keeping a uniform style for buttons, navigation elements, and other interactive components. Consistency creates a polished and professional appearance.
 
-2. Add an eventlistener to the darkmode toggle button in your profile page which should toggle on a dark or light version of the profile page
+#### Step 5: Mobile Responsiveness
 
-   > ❗️ You'll need to set some CSS variables as attributes to the <body> element for example
+Don't forget about the mobile experience! Test your project on various devices to ensure that your styling adjustments look great on both desktop and mobile screens. Responsive design is crucial for reaching a wider audience.
 
-   > ❗️ This functionality should only work for the profile page. We will have a look later how to implement dark/lightmode on the whole application later in the course.
+#### Step 6: Get Feedback
 
-You can have a look at
-[this counter example](https://codesandbox.io/s/github/spicedacademy/fs-web-exercises/tree/main/sessions/recap-project-2/character-count-example)
-for inspiration.
+Once you've implemented your styling enhancements, gather feedback from colleagues or friends. Fresh perspectives can provide valuable insights and help you fine-tune your design.
 
-## Resources
+Remember, this bonus feature is all about expressing your creativity, so have fun with it! Feel free to push the boundaries, but always keep user experience in mind. Happy styling!
 
-⬇️ You can [**download the images for the Quiz App here**](./resources.zip?raw=true).
-
-- Unzip the file to get the `resources` folder.
-- Copy them into your app's main directory.
+---
 
 ## Development
 
