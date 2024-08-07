@@ -1,9 +1,10 @@
 const main = document.querySelector('[data-js="main"]');
 
-export function createJokeCard(joke) {
+export function createJokeCard(joke, index) {
   // section element
   const card = document.createElement("section");
   card.setAttribute("class", "question-card");
+  card.setAttribute("data-js", `question-card-${index}`);
   main.append(card);
 
   // img element
@@ -11,8 +12,20 @@ export function createJokeCard(joke) {
   cardBookmark.setAttribute("class", "question-card__icon");
   cardBookmark.setAttribute("src", `/assets/bookmark_transparent.png`);
   cardBookmark.setAttribute("alt", `bookmark`);
-  cardBookmark.setAttribute("data-js", `bookmark`);
+  cardBookmark.setAttribute("data-js", `bookmark-${index}`);
   card.append(cardBookmark);
+  // event listener bookmark
+  const bookmarkEvent = document.querySelector(`[data-js="bookmark-${index}"]`);
+  bookmarkEvent.addEventListener("click", () => {
+    const isJokeCurrentlySaved = localStorage.getItem(`joke-${index}`);
+    if (isJokeCurrentlySaved) {
+      localStorage.removeItem(`joke-${index}`);
+      cardBookmark.setAttribute("src", `/assets/bookmark_transparent.png`);
+    } else {
+      localStorage.setItem(`joke-${index}`, JSON.stringify(joke));
+      cardBookmark.setAttribute("src", `/assets/bookmark_filled.png`);
+    }
+  });
 
   // // joke Question
   const jokeQuestion = document.createElement("h2");
