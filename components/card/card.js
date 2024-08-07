@@ -9,8 +9,13 @@ export function createJokeCard(joke, index) {
 
   // img element
   const cardBookmark = document.createElement("img");
+  const isJokeCurrentlySaved = localStorage.getItem(`joke-${index}`);
+  if (isJokeCurrentlySaved) {
+    cardBookmark.setAttribute("src", `/assets/bookmark_filled.png`);
+  } else {
+    cardBookmark.setAttribute("src", `/assets/bookmark_transparent.png`);
+  }
   cardBookmark.setAttribute("class", "question-card__icon");
-  cardBookmark.setAttribute("src", `/assets/bookmark_transparent.png`);
   cardBookmark.setAttribute("alt", `bookmark`);
   cardBookmark.setAttribute("data-js", `bookmark-${index}`);
   card.append(cardBookmark);
@@ -21,9 +26,11 @@ export function createJokeCard(joke, index) {
     if (isJokeCurrentlySaved) {
       localStorage.removeItem(`joke-${index}`);
       cardBookmark.setAttribute("src", `/assets/bookmark_transparent.png`);
+      location.reload();
     } else {
       localStorage.setItem(`joke-${index}`, JSON.stringify(joke));
       cardBookmark.setAttribute("src", `/assets/bookmark_filled.png`);
+      location.reload();
     }
   });
 
