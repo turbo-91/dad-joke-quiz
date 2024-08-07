@@ -36,13 +36,19 @@ export function createJokeCard(joke, index) {
   // answer button
   const answerButton = document.createElement("button");
   answerButton.setAttribute("class", "question-card__button");
-  answerButton.setAttribute("data-js", "button");
-  answerButton.textContent = "answer";
+  answerButton.setAttribute("data-js", `button-joke-${index}`);
+  answerButton.textContent = "click!";
   card.append(answerButton);
+  const answerButtonEvent = document.querySelector(
+    `[data-js="button-joke-${index}"]`
+  );
+  answerButtonEvent.addEventListener("click", () => {
+    answerText.classList.toggle("question-card__answer__unhide");
+  });
 
   // answer text
   const answerText = document.createElement("p");
-  // answerText.setAttribute("class", "question-card__answer");
+  answerText.setAttribute("class", "question-card__answer");
   answerText.setAttribute("data-js", "answer");
   answerText.textContent = `${joke.answer}`;
   card.append(answerText);
