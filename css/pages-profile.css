@@ -3,6 +3,7 @@
   margin-bottom: 40px;
   align-items: initial;
   background-color: var(--profile-color);
+  width: 400px;
 }
 
 .profile__name-wrapper {

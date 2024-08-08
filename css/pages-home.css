@@ -4,7 +4,7 @@
 
 .question-card__icon {
   position: absolute;
-  height: 10vw;
+  height: 40px;
   right: 0;
   top: -15px;
 }
@@ -15,7 +15,7 @@
 
 .question-card__title {
   text-align: center;
-  margin: 5vw;
+  margin: 2vw;
   font-size: var(--fs-500);
 }
 

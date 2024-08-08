@@ -39,7 +39,7 @@ export function createJokeCardHome(joke) {
   });
 
   // // joke Question
-  const jokeQuestion = document.createElement("ps");
+  const jokeQuestion = document.createElement("p");
   jokeQuestion.setAttribute("class", "question-card__title");
   jokeQuestion.textContent = `${joke.question}`;
   card.append(jokeQuestion);
