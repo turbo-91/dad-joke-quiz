@@ -1,13 +1,13 @@
 const main = document.querySelector('[data-js="main"]');
 
 export function createJokeCard(joke) {
-  // section element
+  // scard
   const card = document.createElement("section");
   card.setAttribute("class", "question-card");
   card.setAttribute("data-js", `question-card-${joke.id}`);
   main.append(card);
 
-  // img element
+  // bookmark
   const isJokeCurrentlySaved = localStorage.getItem(`joke-${joke.id}`);
   const cardBookmark = document.createElement("img");
 

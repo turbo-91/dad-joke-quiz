@@ -9,51 +9,88 @@ function onSubmit(event) {
   const formData = new FormData(event.target);
   const data = Object.fromEntries(formData);
 
-  const sectionCard = document.createElement("section");
-  sectionCard.setAttribute("class", "question-card");
+  // preview statement
 
-  const img = document.createElement("img");
-  img.setAttribute("class", "question-card__icon");
-  img.setAttribute("src", "./assets/bookmark_transparent.png");
-  img.setAttribute("alt", "bookmark");
+  const preview = document.createElement("h2");
+  preview.setAttribute("class", "question-card__title");
+  preview.textContent = "Preview:";
+  main.append(preview);
+
+  // card
+
+  const card = document.createElement("section");
+  card.setAttribute("class", "question-card");
+  main.append(card);
+
+  // bookmark
+
+  const cardBookmark = document.createElement("img");
+  cardBookmark.setAttribute("class", "question-card__icon");
+  cardBookmark.setAttribute("src", "../assets/bookmark_transparent.png");
+  cardBookmark.setAttribute("alt", "bookmark");
+  cardBookmark.setAttribute("data-js", `bookmark-preview`);
+  card.append(cardBookmark);
+
+  // event listener bookmark
+  const bookmarkEvent = document.querySelector(`[data-js="bookmark-preview"]`);
+  bookmarkEvent.addEventListener("click", () => {
+    const currentSrc = cardBookmark.getAttribute("src");
+    if (currentSrc.includes("bookmark_filled.png")) {
+      cardBookmark.setAttribute("src", `/assets/bookmark_transparent.png`);
+    } else {
+      cardBookmark.setAttribute("src", `/assets/bookmark_filled.png`);
+      window.alert("Can't bookmark unsubmitted question.");
+    }
+  });
+
+  // joke question
 
   const question = document.createElement("h2");
   question.setAttribute("class", "question-card__title");
   let questionInput = data.yourQuestion;
   question.textContent = questionInput;
+  card.append(question);
 
-  console.log(question);
+  // answer button
 
   const answerButton = document.createElement("button");
   answerButton.setAttribute("class", "question-card__button");
-  answerButton.textContent = "Hide Answer";
+  answerButton.setAttribute("data-js", "button-joke-preview");
+  answerButton.textContent = "click!";
+  card.append(answerButton);
+  const answerButtonEvent = document.querySelector(
+    `[data-js="button-joke-preview"]`
+  );
+  answerButtonEvent.addEventListener("click", () => {
+    answerText.classList.toggle("question-card__answer__unhide");
+  });
 
-  const answer = document.createElement("paragraph");
-  answer.setAttribute("class", "question-card__answer__form");
+  // answer
+
+  const answerText = document.createElement("p");
+  answerText.setAttribute("class", "question-card__answer");
+  answerText.setAttribute("data-js", "answer");
   let answerInput = data.yourAnswer;
-  answer.textContent = answerInput;
+  answerText.textContent = answerInput;
+  card.append(answerText);
+
+  // tags
 
   const tagContainer = document.createElement("div");
   tagContainer.setAttribute("class", "question-card__tags");
+  card.append(tagContainer);
 
   const tag = document.createElement("div");
   tag.setAttribute("class", "question-card__tag");
   let tagInput = data.yourTag;
   tag.textContent = "#" + tagInput;
-
-  console.log(tag);
-
-  main.append(sectionCard);
-  sectionCard.append(img);
-  sectionCard.append(question);
-  sectionCard.append(answerButton);
-  sectionCard.append(answer);
-  sectionCard.append(tagContainer);
   tagContainer.append(tag);
 
+  window.alert(
+    "Your joke has been submitted for redaction. You'll find a preview below."
+  );
   event.target.reset();
 }
-
 form.addEventListener("submit", onSubmit);
 
 // add show / hide functionality
