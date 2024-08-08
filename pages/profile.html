@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dad Joke Quiz</title>
     <link rel="stylesheet" href="../styles.css" />
-    <script src="../js/profile.js" defer></script>
+    <script type="module" src="../js/profile.js" defer></script>
   </head>
   <body>
     <header>
@@ -17,21 +17,23 @@
         <div class="profile__name-wrapper">
           <img
             class="profile__icon active"
-            src="./assets/profile_filled.png"
+            src="../assets/profile_filled.png"
             alt="profile filled"
           />
           <h2 class="profile__name">Torben Jost</h2>
         </div>
         <h3 class="profile__about-me-header">About me</h3>
-        <p class="profile__about-me-content">Lorum ipsum</p>
+        <p class="profile__about-me-content">
+          So passionate about bad, uh I mean, dad jokes.
+        </p>
         <div class="profile__button-wrapper">
           <button class="profile__question-button">
-            <img src="assets/question.png" />
-            <span>12</span>
+            <img src="../assets/question.png" />
+            <span data-js="joke-counter">12</span>
           </button>
           <button class="profile__bookmark-button">
-            <img src="assets/bookmark_filled.png" />
-            <span>4</span>
+            <img src="../assets/bookmark_filled.png" />
+            <span data-js="bookmark-counter"></span>
           </button>
         </div>
       </section>
