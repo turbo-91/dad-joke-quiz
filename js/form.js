@@ -19,7 +19,7 @@ function onSubmit(event) {
   // card
 
   const card = document.createElement("section");
-  card.setAttribute("class", "question-card");
+  card.setAttribute("class", "question-card__preview");
   main.append(card);
 
   // bookmark

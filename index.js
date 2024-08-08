@@ -1,4 +1,4 @@
-import { createJokeCard } from "./js/card.js";
+import { createJokeCardHome } from "./js/card.js";
 
 const dadJokes = [
   {
@@ -268,5 +268,5 @@ const dadJokes = [
 ];
 
 dadJokes.forEach((joke) => {
-  createJokeCard(joke);
+  createJokeCardHome(joke);
 });

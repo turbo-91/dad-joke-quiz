@@ -1,6 +1,10 @@
+.question-card__home {
+  background-color: var(--home-color);
+}
+
 .question-card__icon {
   position: absolute;
-  height: 10vw;
+  height: 40px;
   right: 0;
   top: -15px;
 }
@@ -11,15 +15,17 @@
 
 .question-card__title {
   text-align: center;
+  margin: 2vw;
+  font-size: var(--fs-500);
 }
 
 .question-card__button {
   content: "show answer";
-  background-color: var(--accent-color);
   padding: 5px 20px;
-  border: 0px solid black;
-  box-shadow: 0.5vw 0.5vw 1vw 0px rgb(167, 167, 167);
+  border: 0px;
   font-size: var(--fs-500);
+  background-color: var(--transparent-white);
+  font-weight: lighter;
 }
 
 .question-card__button_hideAnswer {
@@ -37,10 +43,9 @@
 }
 
 .question-card__tag {
-  background-color: var(--accent-color);
+  background-color: var(--transparent-white);
   padding: 5px 10px;
   border-radius: 0px;
-  box-shadow: 0.5vw 0.5vw 1vw 0px rgb(167, 167, 167);
   border: 0px;
 }
 
