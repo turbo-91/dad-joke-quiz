@@ -1,298 +1,272 @@
-import { createJokeCard } from "./components/card/card.js";
+import { createJokeCard } from "./js/card.js";
 
 const dadJokes = [
   {
+    id: 1,
     question: "What kind of shoes do ninjas wear?",
     answer: "Sneakers.",
     tags: ["clothing", "martial arts", "footwear"],
   },
   {
+    id: 2,
     question: "Why did the scarecrow become a successful neurosurgeon?",
     answer: "He was outstanding in his field.",
     tags: ["work", "medicine", "success"],
   },
   {
+    id: 3,
     question: "Why did the student eat his homework?",
     answer: "Because the teacher told him it was a piece of cake.",
     tags: ["school", "homework", "food"],
   },
   {
+    id: 4,
     question: "Why did the computer go to the doctor?",
     answer: "It had a virus.",
     tags: ["technology", "health", "computers"],
   },
   {
+    id: 5,
     question: "Why did the coffee file a police report?",
     answer: "It got mugged.",
     tags: ["food", "beverages", "crime"],
   },
   {
+    id: 6,
     question: "What do you call a fish with no eyes?",
     answer: "Fsh.",
     tags: ["animals", "sea", "wordplay"],
   },
   {
+    id: 7,
     question: "Why was the math book sad?",
     answer: "It had too many problems.",
     tags: ["school", "homework", "math"],
   },
   {
+    id: 8,
     question: "What do you call a pile of cats?",
     answer: "A meowtain.",
     tags: ["animals", "cats", "pile"],
   },
   {
+    id: 9,
     question: "What did one wall say to the other wall?",
     answer: "I'll meet you at the corner.",
     tags: ["home", "construction", "meeting"],
   },
   {
+    id: 10,
     question: "Why don’t you ever see elephants hiding in trees?",
     answer: "Because they’re so good at it.",
     tags: ["animals", "hiding", "trees"],
   },
   {
+    id: 11,
     question: "What did the grape do when he got stepped on?",
     answer: "Nothing but let out a little wine.",
     tags: ["food", "fruit", "wine"],
   },
   {
+    id: 12,
     question: "How does a penguin build its house?",
     answer: "Igloos it together.",
     tags: ["animals", "cold"],
   },
   {
+    id: 13,
     question: "What did the ocean say to the beach?",
     answer: "Nothing, it just waved.",
     tags: ["nature", "ocean", "beach"],
   },
   {
+    id: 14,
     question: "How does a scientist freshen her breath?",
     answer: "With experi-mints.",
     tags: ["science", "freshness", "experiments"],
   },
   {
+    id: 15,
     question: "Why was the computer cold?",
     answer: "It left its Windows open.",
     tags: ["technology", "cold", "computers"],
   },
   {
+    id: 16,
     question: "What do you call a dinosaur with an extensive vocabulary?",
     answer: "A thesaurus.",
     tags: ["dinosaurs", "words", "education"],
   },
   {
+    id: 17,
     question: "What do you call a fake noodle?",
     answer: "An impasta.",
     tags: ["food", "Italian"],
   },
   {
+    id: 18,
     question: "How does a duck ask for more food?",
     answer: "Put it on my bill.",
     tags: ["animals", "food", "requests"],
   },
   {
+    id: 19,
     question: "Why don’t scientists trust atoms?",
     answer: "Because they make up everything.",
     tags: ["science", "atoms", "trust"],
   },
   {
+    id: 20,
     question: "What kind of dog loves indulging in a bath?",
     answer: "A shampoo-dle.",
     tags: ["animals", "pets", "bath"],
   },
   {
+    id: 21,
     question: "What did the big flower say to the little flower?",
     answer: "Hey, bud!",
     tags: ["nature", "flowers", "greetings"],
   },
   {
+    id: 22,
     question: "Why did the bicycle fall over?",
     answer: "It was two-tired.",
     tags: ["transportation", "exercise"],
   },
   {
+    id: 23,
     question: "Why don’t some couples go to the gym?",
     answer: "Because some relationships don’t work out.",
     tags: ["relationships", "exercise"],
   },
   {
+    id: 24,
     question: "How do cows stay up to date with current events?",
     answer: "They read the moos-paper.",
     tags: ["animals", "news", "reading"],
   },
   {
+    id: 25,
     question: "What do you call a bear with no teeth?",
     answer: "A gummy bear.",
     tags: ["animals", "sweet", "gummy"],
   },
   {
+    id: 26,
     question: "What do you call cheese that isn't yours?",
     answer: "Nacho cheese.",
     tags: ["food", "cheese"],
   },
   {
+    id: 27,
     question: "What do you call a snowman with a six-pack?",
     answer: "An abdominal snowman.",
     tags: ["winter", "snowman", "fitness"],
   },
   {
+    id: 28,
     question: "How does a penguin drink its coffee?",
     answer: "In a penguin mug.",
     tags: ["animals", "beverages", "coffee"],
   },
   {
+    id: 29,
     question: "What do you call a factory that makes good products?",
     answer: "A satisfactory.",
     tags: ["work", "business"],
   },
   {
-    question: "What kind of shoes do ninjas wear?",
-    answer: "Sneakers.",
-    tags: ["clothing", "martial arts", "footwear"],
-  },
-  {
+    id: 30,
     question: "Why did the tomato turn red?",
     answer: "Because it saw the salad dressing.",
     tags: ["food", "vegetables", "humor"],
   },
   {
+    id: 31,
     question: "Why did the scarecrow win an award?",
     answer: "Because he was outstanding in his field.",
     tags: ["farm", "work"],
   },
   {
+    id: 32,
     question: "Why do birds fly south in the winter?",
     answer: "Because it’s faster than walking.",
     tags: ["animals", "seasonal", "migration"],
   },
   {
+    id: 33,
     question: "What did the janitor say when he jumped out of the closet?",
     answer: "Supplies!",
     tags: ["work", "cleaning", "surprise"],
   },
   {
+    id: 34,
     question: "What do you call a lazy kangaroo?",
     answer: "A pouch potato.",
     tags: ["animals", "slang", "relaxation"],
   },
   {
+    id: 35,
     question: "Why are ghosts bad liars?",
     answer: "Because they are too transparent.",
     tags: ["spooky", "ghosts"],
   },
   {
-    question: "Why did the scarecrow become a successful neurosurgeon?",
-    answer: "He was outstanding in his field.",
-    tags: ["work", "medicine", "success"],
-  },
-  {
+    id: 36,
     question: "What did the left eye say to the right eye?",
     answer: "Between you and me, something smells.",
     tags: ["body", "eyes", "sense of smell"],
   },
   {
-    question: "How does a scientist freshen her breath?",
-    answer: "With experi-mints.",
-    tags: ["science", "freshness", "experiments"],
-  },
-  {
+    id: 37,
     question: "Why did the golfer bring two pairs of pants?",
     answer: "In case he got a hole in one.",
     tags: ["sports", "golf", "clothing"],
   },
   {
+    id: 38,
     question: "Why did the banana go to the doctor?",
     answer: "Because it wasn’t peeling well.",
     tags: ["food", "health"],
   },
   {
-    question: "Why don’t some couples go to the gym?",
-    answer: "Because some relationships don’t work out.",
-    tags: ["relationships", "exercise"],
+    id: 39,
+    question: "What did the zero say to the eight?",
+    answer: "Nice belt!",
+    tags: ["numbers", "clothing", "compliments"],
   },
   {
+    id: 40,
+    question: "Why did the scarecrow become a successful neurosurgeon?",
+    answer: "He was outstanding in his field.",
+    tags: ["work", "medicine", "success"],
+  },
+  {
+    id: 41,
     question: "What do you call a pile of cats?",
     answer: "A meowtain.",
     tags: ["animals", "cats", "pile"],
   },
   {
+    id: 42,
     question: "What do you call a fish with no eyes?",
     answer: "Fsh.",
     tags: ["animals", "sea", "wordplay"],
   },
   {
+    id: 43,
     question: "What did the zero say to the eight?",
     answer: "Nice belt!",
     tags: ["numbers", "clothing", "compliments"],
   },
   {
-    question: "Why did the scarecrow become a successful neurosurgeon?",
-    answer: "He was outstanding in his field.",
-    tags: ["work", "medicine", "success"],
-  },
-  {
-    question: "What do you call a pile of cats?",
-    answer: "A meowtain.",
-    tags: ["animals", "cats", "pile"],
-  },
-  {
-    question: "Why did the student eat his homework?",
-    answer: "Because the teacher told him it was a piece of cake.",
-    tags: ["school", "homework", "food"],
-  },
-  {
-    question: "What kind of shoes do ninjas wear?",
-    answer: "Sneakers.",
-    tags: ["clothing", "martial arts", "footwear"],
-  },
-  {
+    id: 44,
     question: "What do you call a factory that makes good products?",
     answer: "A satisfactory.",
     tags: ["work", "business"],
   },
-  {
-    question: "What kind of shoes do ninjas wear?",
-    answer: "Sneakers.",
-    tags: ["clothing", "martial arts", "footwear"],
-  },
-  {
-    question: "Why don’t scientists trust atoms?",
-    answer: "Because they make up everything.",
-    tags: ["science", "atoms", "trust"],
-  },
-  {
-    question: "What did the zero say to the eight?",
-    answer: "Nice belt!",
-    tags: ["numbers", "clothing", "compliments"],
-  },
-  {
-    question: "Why did the scarecrow become a successful neurosurgeon?",
-    answer: "He was outstanding in his field.",
-    tags: ["work", "medicine", "success"],
-  },
-  {
-    question: "What do you call a pile of cats?",
-    answer: "A meowtain.",
-    tags: ["animals", "cats", "pile"],
-  },
-  {
-    question: "Why did the student eat his homework?",
-    answer: "Because the teacher told him it was a piece of cake.",
-    tags: ["school", "homework", "food"],
-  },
-  {
-    question: "What do you call a dinosaur with an extensive vocabulary?",
-    answer: "A thesaurus.",
-    tags: ["dinosaurs", "words", "education"],
-  },
-  {
-    question: "Why did the scarecrow become a successful neurosurgeon?",
-    answer: "He was outstanding in his field.",
-    tags: ["work", "medicine", "success"],
-  },
 ];
 
-dadJokes.forEach((joke, index) => {
-  createJokeCard(joke, index);
+dadJokes.forEach((joke) => {
+  createJokeCard(joke);
 });

@@ -1,4 +1,4 @@
-import { createJokeCard } from "./components/card/card.js";
+import { createJokeCard } from "./card.js";
 
 function getAllJokesFromLocalStorage() {
   const localJokes = [];

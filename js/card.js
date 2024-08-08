@@ -1,15 +1,16 @@
 const main = document.querySelector('[data-js="main"]');
 
-export function createJokeCard(joke, index) {
-  // section element
+export function createJokeCard(joke) {
+  // scard
   const card = document.createElement("section");
   card.setAttribute("class", "question-card");
-  card.setAttribute("data-js", `question-card-${index}`);
+  card.setAttribute("data-js", `question-card-${joke.id}`);
   main.append(card);
 
-  // img element
+  // bookmark
+  const isJokeCurrentlySaved = localStorage.getItem(`joke-${joke.id}`);
   const cardBookmark = document.createElement("img");
-  const isJokeCurrentlySaved = localStorage.getItem(`joke-${index}`);
+
   if (isJokeCurrentlySaved) {
     cardBookmark.setAttribute("src", `/assets/bookmark_filled.png`);
   } else {
@@ -17,18 +18,21 @@ export function createJokeCard(joke, index) {
   }
   cardBookmark.setAttribute("class", "question-card__icon");
   cardBookmark.setAttribute("alt", `bookmark`);
-  cardBookmark.setAttribute("data-js", `bookmark-${index}`);
+  cardBookmark.setAttribute("data-js", `bookmark-${joke.id}`);
   card.append(cardBookmark);
+
   // event listener bookmark
-  const bookmarkEvent = document.querySelector(`[data-js="bookmark-${index}"]`);
+  const bookmarkEvent = document.querySelector(
+    `[data-js="bookmark-${joke.id}"]`
+  );
   bookmarkEvent.addEventListener("click", () => {
-    const isJokeCurrentlySaved = localStorage.getItem(`joke-${index}`);
+    const isJokeCurrentlySaved = localStorage.getItem(`joke-${joke.id}`);
     if (isJokeCurrentlySaved) {
-      localStorage.removeItem(`joke-${index}`);
+      localStorage.removeItem(`joke-${joke.id}`);
       cardBookmark.setAttribute("src", `/assets/bookmark_transparent.png`);
       location.reload();
     } else {
-      localStorage.setItem(`joke-${index}`, JSON.stringify(joke));
+      localStorage.setItem(`joke-${joke.id}`, JSON.stringify(joke));
       cardBookmark.setAttribute("src", `/assets/bookmark_filled.png`);
       location.reload();
     }
@@ -43,11 +47,11 @@ export function createJokeCard(joke, index) {
   // answer button
   const answerButton = document.createElement("button");
   answerButton.setAttribute("class", "question-card__button");
-  answerButton.setAttribute("data-js", `button-joke-${index}`);
+  answerButton.setAttribute("data-js", `button-joke-${joke.id}`);
   answerButton.textContent = "click!";
   card.append(answerButton);
   const answerButtonEvent = document.querySelector(
-    `[data-js="button-joke-${index}"]`
+    `[data-js="button-joke-${joke.id}"]`
   );
   answerButtonEvent.addEventListener("click", () => {
     answerText.classList.toggle("question-card__answer__unhide");
