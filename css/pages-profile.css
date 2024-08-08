@@ -1,8 +1,8 @@
-.profile,
-.settings {
+.profile {
   padding: 20px 40px;
   margin-bottom: 40px;
   align-items: initial;
+  background-color: var(--profile-color);
 }
 
 .profile__name-wrapper {
@@ -39,22 +39,10 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: var(--accent-color);
+  background-color: var(--transparent-white);
   border: 0px;
-  box-shadow: 0.5vw 0.5vw 1vw 0px rgb(167, 167, 167);
 }
 
 .profile__button-wrapper button img {
   width: 20px;
-}
-
-.settings__title {
-  text-align: left;
-  margin-bottom: 10px;
-}
-
-.settings__dark-mode-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }

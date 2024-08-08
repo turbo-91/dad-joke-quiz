@@ -1,4 +1,4 @@
-import { createJokeCard } from "./card.js";
+import { createJokeCardBookmark } from "./card.js";
 
 function getAllJokesFromLocalStorage() {
   const localJokes = [];
@@ -19,5 +19,5 @@ function getAllJokesFromLocalStorage() {
 const localJokes = getAllJokesFromLocalStorage();
 localJokes.forEach((joke, index) => {
   console.log(joke);
-  createJokeCard(joke, index);
+  createJokeCardBookmark(joke, index);
 });

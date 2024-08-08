@@ -1,9 +1,8 @@
 form {
   position: relative;
-  background-color: #ffd1e3;
+  background-color: var(--form-color);
   padding: 10px;
-  /* border: 1px solid black; */
-  box-shadow: 1vw 1vw 1vw 0px rgb(167, 167, 167);
+  border: 0px;
   margin-bottom: 40px;
   display: flex;
   flex-direction: column;
@@ -26,22 +25,15 @@ input {
 
 .form__button {
   margin-top: 3vw;
-  background-color: var(--accent-color);
-  /* border-radius: 20px;*/
+  background-color: var(--transparent-white);
   padding: 5px 20px;
-  border: 0px solid black;
-  box-shadow: 0.5vw 0.5vw 1vw 0px rgb(167, 167, 167);
+  border: 0px;
   font-size: var(--fs-500);
   width: fit-content;
 }
 
-.question-card__button {
-  content: "show answer";
-  background-color: var(--accent-color);
-  padding: 5px 20px;
-  border: 0px solid black;
-  box-shadow: 0.5vw 0.5vw 1vw 0px rgb(167, 167, 167);
-  font-size: var(--fs-500);
+.question-card__preview {
+  background-color: var(--form-color);
 }
 
 .question-card__answer__form {
