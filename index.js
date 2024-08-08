@@ -1,4 +1,4 @@
-import { createJokeCard } from "./components/card/card.js";
+import { createJokeCard } from "./js/card.js";
 
 const dadJokes = [
   {
