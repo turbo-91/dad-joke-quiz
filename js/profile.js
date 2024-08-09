@@ -34,7 +34,14 @@ bookmarkCounter();
 
 // joke counter
 
-const jokeCounter = document.querySelector('[data-js="joke-counter"]');
+let jokeCounter = document.querySelector('[data-js="joke-counter"]');
+
+function displaySubmitCount() {
+  const submitCount = localStorage.getItem("submitCount") || 0;
+  jokeCounter.textContent = submitCount;
+}
+displaySubmitCount();
+
 jokeCounter.addEventListener("click", () => {
   window.alert("This is the amount of submitted jokes.");
 });

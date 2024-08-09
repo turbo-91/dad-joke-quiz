@@ -1,6 +1,11 @@
 const form = document.querySelector('[data-js="form"]');
 const main = document.querySelector('[data-js="main"]');
 
+// Load submit count from local storage or initialize it
+let submitCount = localStorage.getItem("submitCount")
+  ? parseInt(localStorage.getItem("submitCount"))
+  : 0;
+
 // Create new Question card on submit
 
 function onSubmit(event) {
@@ -8,6 +13,12 @@ function onSubmit(event) {
 
   const formData = new FormData(event.target);
   const data = Object.fromEntries(formData);
+
+  // Validate all fields are filled
+  if (!data.yourQuestion || !data.yourAnswer || !data.yourTag) {
+    window.alert("All fields are required!");
+    return; // Stop form submission if any field is empty
+  }
 
   // preview statement
 
@@ -86,14 +97,22 @@ function onSubmit(event) {
   tag.textContent = "#" + tagInput;
   tagContainer.append(tag);
 
-  window.alert(
-    "Your joke has been submitted for redaction. You'll find a preview below."
-  );
+  // submit message
+
+  window.alert("Your joke has been submitted for redaction. Here's a preview.");
+
+  // Increment and save submit count to local storage
+  submitCount++;
+  localStorage.setItem("submitCount", submitCount);
+  console.log(`Submit button has been used ${submitCount} times.`);
+
+  // Reset the form and character counters
+
   event.target.reset();
+  updateAmountLeftQuestion(maxLengthQuestion);
+  updateAmountLeftAnswer(maxLengthAnswer);
 }
 form.addEventListener("submit", onSubmit);
-
-// add show / hide functionality
 
 // Character counter for question input field
 
@@ -127,4 +146,12 @@ updateAmountLeftAnswer(maxLengthAnswer);
 
 yourAnswer.addEventListener("input", () => {
   updateAmountLeftAnswer(maxLengthAnswer - yourAnswer.value.length);
+});
+
+// Disallow spaces in tag input field
+
+const yourTag = document.querySelector('[data-js="yourTag"]');
+
+yourTag.addEventListener("input", (event) => {
+  yourTag.value = yourTag.value.replace(/\s+/g, "");
 });
