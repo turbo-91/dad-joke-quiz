@@ -17,7 +17,7 @@ You can then use the following commands:
 
 [![My Skills](https://skillicons.dev/icons?i=html)](https://skillicons.dev)
 
-## Home Page
+## Home page
 
 <img src="./assets/homepage.gif">
 
@@ -25,7 +25,7 @@ You can then use the following commands:
 
 
 
-## Submit Questions
+## Submit jokes
 
 <img src="./assets/submit.gif">
 
