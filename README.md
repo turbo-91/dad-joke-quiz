@@ -23,10 +23,10 @@ You can then use the following commands:
 
 ## Bookmarking
 
-<img src="./assets/submit.gif">
+
 
 ## Submit Questions
 
-<img src="./public/spotlight.png">
+<img src="./assets/submit.gif">
 
 
