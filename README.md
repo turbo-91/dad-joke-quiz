@@ -1,22 +1,17 @@
-# TADAAAAAAAAA this is the dad-joke-quiz
+# Technologies
 
-## Development
+[![My Skills](https://skillicons.dev/icons?i=js)](https://skillicons.dev) 
 
-### Local Development
+[![My Skills](https://skillicons.dev/icons?i=css)](https://skillicons.dev)
 
-To work locally, please install the dependencies using `npm i` first.
+[![My Skills](https://skillicons.dev/icons?i=html)](https://skillicons.dev)
 
-Run `npm run start` to start a development server and open [localhost:3000](http://localhost:3000) in a browser.
+### Local development
 
-> Alternatively you can use the Live Preview Extension for Visual Studio Code to view this project.  
-> Select the HTML file you want to view, press <kbd>⇧</kbd><kbd>⌘</kbd><kbd>P</kbd>, search for `Live Preview: Show Preview` and confirm with <kbd>Enter</kbd>.
+To run project commands locally, you need to install the dependencies using `npm i` first.
 
-Use `npm run test` to run the tests.
+You can then use the following commands:
 
-### Scripts
-
-You can use the following commands:
-
-- `npm run start` to start a development server
-- `npm run test` to run the tests
-- `npm run lint` to run the linter
+- `npm run dev` to start the development server
+- `npm run build` to create a production build
+- `npm run start` to start the production build
