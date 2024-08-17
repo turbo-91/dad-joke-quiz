@@ -12,9 +12,9 @@ export function createJokeCardHome(joke) {
   const cardBookmark = document.createElement("img");
 
   if (isJokeCurrentlySaved) {
-    cardBookmark.setAttribute("src", `../assets/bookmark_filled.png`);
+    cardBookmark.setAttribute("src", `./assets/bookmark_filled.png`);
   } else {
-    cardBookmark.setAttribute("src", `../assets/bookmark_transparent.png`);
+    cardBookmark.setAttribute("src", `./assets/bookmark_transparent.png`);
   }
   cardBookmark.setAttribute("class", "question-card__icon");
   cardBookmark.setAttribute("alt", `bookmark`);
@@ -29,11 +29,11 @@ export function createJokeCardHome(joke) {
     const isJokeCurrentlySaved = localStorage.getItem(`joke-${joke.id}`);
     if (isJokeCurrentlySaved) {
       localStorage.removeItem(`joke-${joke.id}`);
-      cardBookmark.setAttribute("src", `../assets/bookmark_transparent.png`);
+      cardBookmark.setAttribute("src", `./assets/bookmark_transparent.png`);
       location.reload();
     } else {
       localStorage.setItem(`joke-${joke.id}`, JSON.stringify(joke));
-      cardBookmark.setAttribute("src", `../assets/bookmark_filled.png`);
+      cardBookmark.setAttribute("src", `./assets/bookmark_filled.png`);
       location.reload();
     }
   });
