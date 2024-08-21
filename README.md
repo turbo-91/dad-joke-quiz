@@ -18,11 +18,11 @@ You can then use the following commands:
 
 ## Home page
 
-<img src="./assets/homepage.png" width="600" >
+<img src="./assets/homepage.png" width="640" >
 
 ## Bookmarking
 
-<img src="./assets/bookmark_page.png" width="600" >
+<img src="./assets/bookmark_page.png" width="640" >
 
 ## Submit jokes
 
