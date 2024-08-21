@@ -22,7 +22,7 @@ You can then use the following commands:
 
 ## Bookmarking
 
-<img src="./assets/bookmark_page.png" max-width: "600px">
+<img src="./assets/bookmark_page.png" max-width: 600px>
 
 ## Submit jokes
 
